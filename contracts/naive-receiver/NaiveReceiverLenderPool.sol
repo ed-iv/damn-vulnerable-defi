@@ -48,7 +48,7 @@ contract NaiveReceiverLenderPool is ReentrancyGuard, IERC3156FlashLender {
         // Transfer ETH and handle control to receiver
         SafeTransferLib.safeTransferETH(address(receiver), amount);
         if(receiver.onFlashLoan(
-            msg.sender,
+            msg.sender, // never checked in the implementation here
             ETH,
             amount,
             FIXED_FEE,
